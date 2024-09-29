@@ -5,7 +5,7 @@ from keras.models import load_model
 import streamlit as st
 import matplotlib.pyplot as plt
 
-model = load_model(r'C:\Users\dream\OneDrive\Desktop\STOCK_PRICE_PREDICTOR\MODEL\Stock Predictions Model.keras')
+model = load_model(r'MODEL/Stock Predictions Model.keras')
 st.header('Stock price predictor')
 
 stock = st.text_input('ENTER THE SYMBOL FOR STOCK PRICE', 'TCS.NS')
