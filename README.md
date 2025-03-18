@@ -1,49 +1,58 @@
-Link = https://stock-price-fahaegqovvbfj5z4cfzrjz.streamlit.app/
+# Stock Price Prediction using LSTM  
 
-TCS Stock Price Prediction using LSTM
+## Project Overview  
+The **Stock Price Prediction** project utilizes **Long Short-Term Memory (LSTM)** neural networks to forecast future stock closing prices. By leveraging historical stock data, this model aims to provide valuable insights for traders and investors. The approach is **generalized** and can be applied to predict the stock prices of **any company** with minimal modifications.  
 
-Project Overview
-The TCS Stock Price Prediction project leverages the power of Long Short-Term Memory (LSTM) neural networks to predict the future closing prices of ANY stock. By utilizing historical stock price data, this project aims to provide insights and predictions that can be beneficial for traders and investors.
+## Technologies Used  
+- **Python** – Core programming language for data analysis and model development.  
+- **Pandas** – Data preprocessing and manipulation.  
+- **NumPy** – Numerical computations.  
+- **Matplotlib & Seaborn** – Data visualization.  
+- **yFinance** – Fetching historical stock price data from Yahoo Finance.  
+- **Scikit-Learn** – Data scaling using `MinMaxScaler`.  
+- **Keras & TensorFlow** – Building and training the LSTM neural network.  
 
-Technologies Used
-1. Python: The core programming language used for data manipulation, analysis, and model development.
-2. Pandas: For data preprocessing and manipulation.
-3. NumPy: For numerical computations.
-4. Matplotlib: For data visualization.
-5. yFinance: To fetch historical stock price data from Yahoo Finance.
-6. Scikit-Learn: For scaling the data using MinMaxScaler.
-7. Keras and TensorFlow: To build and train the LSTM neural network.
+## Data Collection  
+Historical stock price data is collected using the **yFinance** library. The dataset includes:  
+- **Open, High, Low, Close, Volume, and Adjusted Close** prices.  
+- A customizable date range (e.g., **January 1, 2005 – December 31, 2024** for testing).  
 
-Data Collection
-The historical stock price data for TCS was collected using the yFinance library. The data includes various features such as Open, High, Low, Close, Volume, and Adj Close prices over a specified date range from January 1, 2005, to December 31, 2024.
+## Data Preprocessing  
+1. **Handling Missing Values** – Any rows with missing data are dropped.  
+2. **Feature Selection** – Only the **‘Close’** price is used for prediction.  
+3. **Scaling** – The data is normalized to a range of **0 to 1** using `MinMaxScaler`.  
+4. **Train-Test Split** – Data is divided into:  
+   - **80% training set**  
+   - **20% testing set**  
+5. **Generating Sequences** – The model takes sequences of **100 days** as input to predict the next day's closing price.  
 
-Data Preprocessing
-1. Missing Values: The dataset was cleaned by dropping any rows with missing values.
-2. Feature Selection: Only the 'Close' price was selected for the prediction model.
-3. Scaling: The 'Close' prices were scaled to a range of 0 to 1 using the MinMaxScaler to ensure the model performs optimally.
-4. Creating Training and Test Sets: The data was split into training (80%) and testing (20%) sets.
-5. Generating Sequences: Sequences of 100 days' worth of data were used as input features to predict the next day's closing price.
+## Model Development  
+The **LSTM model** is built using the **Keras** library with the following architecture:  
+- **Four LSTM layers** with units (50, 60, 80, 120)  
+- **Dropout layers** after each LSTM layer to prevent overfitting  
+- **Dense layer** to produce the final output  
+- Compiled using:  
+  - **Optimizer** – `adam`  
+  - **Loss function** – `mean squared error (MSE)`  
 
-Model Development
-An LSTM neural network was developed using the Keras library. The architecture of the model includes:
-1. Four LSTM layers with different units (50, 60, 80, 120), each followed by Dropout layers to prevent overfitting.
-2. A Dense layer to produce the final output.
-3. The model was compiled using the 'adam' optimizer and 'mean squared error' as the loss function.
+## Model Training  
+- Trained for **50 epochs** with a **batch size of 32**.  
+- The model minimizes the **loss function** to optimize prediction accuracy.  
 
-Model Training
-The model was trained on the training set for 50 epochs with a batch size of 32. The training process aimed to minimize the loss function and optimize the model's weights for better prediction accuracy.
+## Results and Predictions  
+- The trained model predicts stock prices on the test dataset.  
+- Predictions are visualized against actual prices to evaluate performance.  
+- The model provides insights into stock trends based on historical data.  
 
-Results and Predictions
-The trained model was used to predict the stock prices on the test set. The predicted values were then compared with the actual stock prices to evaluate the model's performance. Visualizations were created to illustrate the predictions versus the actual prices.
+## Deployment  
+- A **web application** is built to allow users to input a date range and get predicted stock prices.  
+- This enables **real-time predictions** with a user-friendly interface.  
 
-Deployment
-The model was deployed as a web application, allowing users to input a date range and receive predicted closing prices for TCS stock. This deployment enables real-time predictions and provides a user-friendly interface for investors and traders.
+## Future Enhancements  
+- **Incorporate More Features** – Include trading volume, technical indicators, and news sentiment analysis.  
+- **Model Optimization** – Experiment with different architectures and hyperparameters.  
+- **Expand to More Stocks** – Generalize the model for multiple stock predictions.  
+- **Real-time Data** – Integrate live stock data for up-to-date forecasting.  
 
-Future Work
-1. Incorporate More Features: Including additional features such as trading volume, technical indicators, and news sentiment analysis to improve prediction accuracy.
-2. Model Optimization: Experimenting with different model architectures and hyperparameters to enhance performance.
-3. Expand to Other Stocks: Generalizing the model to predict stock prices for other companies and integrating multiple stock predictions in the web application.
-4. Real-time Data: Incorporating real-time stock data for up-to-date predictions.
-
-Conclusion
-This project demonstrates the potential of LSTM neural networks in time series forecasting, specifically for predicting stock prices. By providing accurate predictions and a user-friendly web interface, this project can aid investors in making informed decisions.
+## Conclusion  
+This project demonstrates the potential of **LSTM neural networks** for **time series forecasting** in stock price prediction. By providing **accurate forecasts** and an **interactive web interface**, the model can assist traders and investors in making **informed decisions**.  
